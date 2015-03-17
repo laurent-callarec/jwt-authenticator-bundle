@@ -1,0 +1,21 @@
+{
+    "name": "elce/jwt-authenticator-bundle",
+    "description": "A Symfony2 bundled JWT authenticator",
+    "repo sitories": [
+      {
+        "type": "vcs",
+        "url": "/media/laurent/SharedData/Dev/git/sf-sw/src/Elce/JWAuthenticator/"
+      }
+    ],
+    "require": {
+        "firebase/php-jwt": "1.0.0",
+        "symfony/security": "dev-master"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Laurent Callarec",
+            "email": "l.callarec@gmail.com"
+        }
+    ]
+}
