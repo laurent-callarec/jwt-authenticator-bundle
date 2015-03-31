@@ -2,6 +2,7 @@
 
 namespace Elce\JWTAuthenticator\Bundle;
 
+use Elce\JWTAuthenticator\Bundle\DependencyInjection\JWTAuthenticatorExtension;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 /**
@@ -11,6 +12,14 @@ use Symfony\Component\HttpKernel\Bundle\Bundle;
  */
 class JWTAuthenticatorBundle extends Bundle
 {
+    /**
+     * {@inheritDoc}
+     */
+    public function getContainerExtension()
+    {
+        return new JWTAuthenticatorExtension();
+    }
+
     /**
      * {@inheritDoc}
      */
