@@ -15,13 +15,20 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationFailureHandlerI
 
 class JWTAuthenticator implements SimplePreAuthenticatorInterface, AuthenticationFailureHandlerInterface
 {
+    /** @var JWTUserProvider */
     protected $userProvider;
 
+    /**
+     * @param JWTUserProvider $userProvider
+     */
     public function __construct(JWTUserProvider $userProvider)
     {
         $this->userProvider = $userProvider;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     public function createToken(Request $request, $providerKey)
     {
         $apiKey = $request->get('apikey');
@@ -37,6 +44,9 @@ class JWTAuthenticator implements SimplePreAuthenticatorInterface, Authenticatio
         );
     }
 
+    /**
+     * {@inheritDoc}
+     */
     public function authenticateToken(TokenInterface $token, UserProviderInterface $userProvider, $providerKey)
     {
         $apiKey = $token->getCredentials();
@@ -61,11 +71,17 @@ class JWTAuthenticator implements SimplePreAuthenticatorInterface, Authenticatio
         );
     }
 
+    /**
+     * {@inheritDoc}
+     */
     public function supportsToken(TokenInterface $token, $providerKey)
     {
         return $token instanceof PreAuthenticatedToken && $token->getProviderKey() === $providerKey;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     public function onAuthenticationFailure(Request $request, AuthenticationException $exception)
     {
         return new Response($exception->getMessageKey(), 403);
