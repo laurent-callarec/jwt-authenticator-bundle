@@ -15,6 +15,6 @@ class DefaultController extends Controller
             'expires_at' => time() + 120
         ];
 
-        return $this->render('MeMeBundle:Default:index.html.twig', array('name' => (4)));
+        return $this->render('JWTAuthenticatorBundle:Default:index.html.twig', array('name' => $name));
     }
 }
