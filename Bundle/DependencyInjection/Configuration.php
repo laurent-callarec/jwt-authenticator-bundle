@@ -19,9 +19,17 @@ class Configuration implements ConfigurationInterface
         $treeBuilder = new TreeBuilder();
         $rootNode = $treeBuilder->root('elce_jwt_authenticator');
 
-        // Here you should define the parameters that are allowed to
-        // configure your bundle. See the documentation linked above for
-        // more information on that topic.
+        $rootNode
+            ->children()
+                ->arrayNode('jwt_secrets')
+                    ->prototype('scalar')->end()
+                    ->defaultValue([])
+                ->end()
+                ->scalarNode('jwt_secret')
+                    ->defaultNull()
+                ->end()
+            ->end()
+        ;
 
         return $treeBuilder;
     }
